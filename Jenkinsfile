@@ -13,7 +13,8 @@ node{
      stage('SonarQube Analysis'){
          def scannerHome = tool 'sonarqube';
          withSonarQubeEnv('sonarqube'){
-             bat "${scannerHome}/bin/sonar-scanner \
+             //bat "${scannerHome}/bin/sonar-scanner \
+             bat(/"D:\Software\apache-maven-3.8.2-bin\apache-maven-3.8.2\bin\mvn" sonar:sonar/) \
              -D sonar.login=admin \
              -D sonar.password=root \
              -D sonar.projectKey=jenkins-pipeline \
