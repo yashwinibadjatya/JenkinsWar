@@ -21,8 +21,13 @@ node{
              -D sonar.host.url=http://localhost:9000/"
          }
      } 
-   stage('Sonarqube Quality Gate'){
-     waitForQualityGate abrotPipeline: true
+   stage('Sonarqube Quality Gate Status Check'){
+      timeout(time: 1, unit: 'HOURS'){
+      def qg = waitForQualityGate()
+         if(qg.status != 'OK') {
+            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+         }
+      }
    }
 /*   stage ('Stop Tomcat Server') {
                bat ''' @ECHO OFF
