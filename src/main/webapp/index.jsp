@@ -17,6 +17,20 @@
     <div class="card-body">Basic card</div>
   </div>
 </div>
+  
+  <div class="container">
+  <h2>Basic Card</h2>
+  <div class="card">
+    <div class="card-body">Basic card</div>
+  </div>
+</div>
+  
+  <div class="container">
+  <h2>Basic Card</h2>
+  <div class="card">
+    <div class="card-body">Basic card</div>
+  </div>
+</div>
 
 </body>
 </html>
