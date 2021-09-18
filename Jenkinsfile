@@ -21,6 +21,9 @@ node{
              -D sonar.host.url=http://localhost:9000/"
          }
      } 
+   stage('Sonarqube Quality Gate'){
+     waitForQualityGate abrotPipeline: true
+   }
 /*   stage ('Stop Tomcat Server') {
                bat ''' @ECHO OFF
                wmic process list brief | find /i "tomcat" > NUL
