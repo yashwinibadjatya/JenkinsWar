@@ -10,6 +10,17 @@ node{
       // Get maven home path
       bat(/"D:\Software\apache-maven-3.8.2-bin\apache-maven-3.8.2\bin\mvn" package/)
       }
+     stage('SonarQube Analysis'){
+         def scannerHome = tool 'sonarqube';
+         withSonarQubeEnv('sonarqube'){
+             bat "${scannerHome}/bin/sonar-scanner \
+             -D sonar.login=admin \
+             -D sonar.password=root \
+             -D sonar.projectKey=jenkins-pipeline \
+             -D sonar.exclusions=vendor/**,resources/**,**/*.java \
+             -D sonar.host.url=http://localhost:9000/"
+         }
+     } 
 /*   stage ('Stop Tomcat Server') {
                bat ''' @ECHO OFF
                wmic process list brief | find /i "tomcat" > NUL
@@ -25,9 +36,5 @@ node{
    stage('Deploy to Tomcat'){
      bat "copy target\\JenkinsWar.war \"${tomcatWeb}\\JenkinsWar.war\""
    }
-      stage ('Start Tomcat Server') {
-         sleep(time:5,unit:"SECONDS") 
-         bat "${tomcatBin}\\startup.bat"
-         sleep(time:100,unit:"SECONDS")
-   }
+      
 }
