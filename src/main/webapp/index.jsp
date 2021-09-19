@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body> 
- 
+  <h1>${hello}</h1>
 <div class="container">
   <h2>Basic Card</h2>
   <div class="card">
